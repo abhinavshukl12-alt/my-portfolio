@@ -41,7 +41,16 @@ Toggle Theme
             <li>Video Editing</li>
         </ul>
     </section>
+<section>
+<h2>Dashboard 📊</h2>
 
+<div class="card">
+    <p>Visitors Today: <span id="v"></span></p>
+    <p>Projects: 4</p>
+    <p>Status: ACTIVE ⚡</p>
+</div>
+
+</section>
     <!-- Projects Section -->
     <section class="projects">
         <h2>Projects</h2>
@@ -52,21 +61,47 @@ Toggle Theme
             <li>python based interactive game devloper </li>
         </ul>
     </section>
+<section>
 
+<h2>AI Assistant 🤖</h2>
+
+<input type="text" id="q" placeholder="Ask something...">
+
+<button onclick="askAI()">
+Ask AI
+</button>
+
+<p id="ans"></p>
+
+</section>
     <!-- Contact Section -->
-    <section class="contact">
-        <h2>Contact</h2>
-        <p>Email: abhinavshukl12@gmail.com </p>
-    </section>
+ <section class="contact">
 
-    <footer>
-        <p>© 2026 My Portfolio</p>
-    </footer>
-<footer>
-    <p>© 2026 My Portfolio</p>
-</footer>
+<h2>Contact 📩</h2>
 
-<script src="script.js"></script>
+<form action="https://formsubmit.co/abhinavshukl12@gmail.com" method="POST">
+
+<input type="hidden" name="_captcha" value="false">
+
+<input type="text" name="name" placeholder="Name" required>
+
+<br><br>
+
+<input type="email" name="email" placeholder="Email" required>
+
+<br><br>
+
+<textarea name="message" placeholder="Message"></textarea>
+
+<br><br>
+
+<button type="submit">
+Send 🚀
+</button>
+
+</form>
+
+</section>  
 
 </body>
 </html>
