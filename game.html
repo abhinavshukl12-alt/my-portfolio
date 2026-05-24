@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Speed Click Challenge</title>
+
+<style>
+
+body {
+
+    background: #050816;
+
+    color: white;
+
+    font-family: Arial;
+
+    text-align: center;
+
+    padding-top: 80px;
+}
+
+h1 {
+
+    text-shadow: 0 0 15px #38bdf8;
+}
+
+#clickBtn {
+
+    padding: 20px 40px;
+
+    font-size: 24px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: #38bdf8;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+#clickBtn:hover {
+
+    transform: scale(1.08);
+
+    box-shadow: 0 0 20px #38bdf8;
+}
+
+#score, #timer {
+
+    font-size: 28px;
+
+    margin: 20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>⚡ Speed Click Challenge</h1>
+
+<p>Click as fast as you can before time ends!</p>
+
+<div id="timer">
+Time: 10
+</div>
+
+<div id="score">
+Score: 0
+</div>
+
+<button id="clickBtn">
+CLICK!
+</button>
+
+<script>
+
+let score = 0;
+
+let timeLeft = 10;
+
+let gameStarted = false;
+
+const scoreDisplay =
+document.getElementById("score");
+
+const timerDisplay =
+document.getElementById("timer");
+
+const button =
+document.getElementById("clickBtn");
+
+button.addEventListener("click", () => {
+
+    if(!gameStarted) {
+
+        startGame();
+
+        gameStarted = true;
+    }
+
+    score++;
+
+    scoreDisplay.innerText =
+    "Score: " + score;
+});
+
+function startGame() {
+
+    let timer = setInterval(() => {
+
+        timeLeft--;
+
+        timerDisplay.innerText =
+        "Time: " + timeLeft;
+
+        if(timeLeft <= 0) {
+
+            clearInterval(timer);
+
+            button.disabled = true;
+
+            timerDisplay.innerText =
+            "🏆 Game Over!";
+
+            alert(
+            "Final Score: " + score
+            );
+        }
+
+    }, 1000);
+}
+
+</script>
+
+</body>
+</html>
