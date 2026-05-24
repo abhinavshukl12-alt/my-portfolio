@@ -55,3 +55,19 @@ function askAI() {
 
     }, 500);
 }
+/* popup opens after 3 sec */
+
+setTimeout(() => {
+
+document.getElementById("popup")
+.style.display = "block";
+
+}, 3000);
+
+/* close popup */
+
+function closePopup() {
+
+document.getElementById("popup")
+.style.display = "none";
+}
