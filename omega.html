@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>OMEGA X // DEFENSE MODE</title>
+<title>OMEGA X // SPACE DEFENSE GAME</title>
 
 <style>
 body{
@@ -13,24 +13,22 @@ body{
   color:#00ffe1;
 }
 
-/* 🌍 UI */
 #ui{
   position:absolute;
-  top:20px;
-  left:20px;
+  top:15px;
+  left:15px;
   z-index:10;
 }
 
 .panel{
-  background:rgba(0,0,0,0.5);
+  background:rgba(0,0,0,0.6);
   border:1px solid #00ffe1;
   padding:10px;
   margin-bottom:10px;
-  backdrop-filter: blur(10px);
 }
 
 button{
-  margin:5px;
+  margin:4px;
   padding:8px;
   background:black;
   border:1px solid #00ffe1;
@@ -52,21 +50,15 @@ button:hover{
   color:red;
   padding:10px;
   display:none;
-  animation:blink 0.5s infinite;
+  animation:blink 0.4s infinite;
 }
 
 @keyframes blink{
   50%{opacity:0.2;}
 }
 
-/* 🔴 LASER BEAM */
-.beam{
-  position:absolute;
-  width:4px;
-  height:100px;
-  background:cyan;
-  box-shadow:0 0 20px cyan;
-  display:none;
+#score{
+  color:white;
 }
 </style>
 </head>
@@ -76,36 +68,33 @@ button:hover{
 <div id="ui">
 
   <div class="panel">
-    🌌 OMEGA DEFENSE SYSTEM<br><br>
+    🌌 OMEGA SPACE DEFENSE<br><br>
 
-    <button onclick="deploy()">🛰 DEPLOY SATELLITE</button>
-    <button onclick="anomaly()">⚠ ANOMALY ALERT</button>
-    <button onclick="fire()">🔫 FIRE DEFENSE BEAM</button>
-    <button onclick="asteroid()">☄ ASTEROID INCOMING</button>
+    <button onclick="deploy()">🛰 SATELLITE</button>
+    <button onclick="fire()">🔫 LASER FIRE</button>
+    <button onclick="startWave()">☄ START ATTACK</button>
     <button onclick="reset()">🔄 RESET</button>
-
   </div>
 
   <div class="panel">
-    SATELLITES: <span id="sat">0</span><br>
-    STATUS: <span id="status">STABLE</span>
+    ❤️ HEALTH: <span id="hp">100</span><br>
+    🎯 SCORE: <span id="score">0</span><br>
+    🛰 SATS: <span id="sat">0</span>
   </div>
 
 </div>
 
-<div id="alert">UNKNOWN THREAT DETECTED</div>
-<div class="beam" id="beam"></div>
+<div id="alert">THREAT DETECTED</div>
 
-<!-- THREE JS -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.min.js"></script>
 
 <script>
 
-// 🌍 SCENE
+// 🌍 SETUP
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, innerWidth/innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000);
 const renderer = new THREE.WebGLRenderer({antialias:true});
-renderer.setSize(innerWidth, innerHeight);
+renderer.setSize(innerWidth,innerHeight);
 document.body.appendChild(renderer.domElement);
 
 // 🌍 EARTH
@@ -114,91 +103,93 @@ const earth = new THREE.Mesh(
   new THREE.MeshBasicMaterial({color:0x00ffe1,wireframe:true})
 );
 scene.add(earth);
-
 camera.position.z = 6;
 
 // 🛰 SATELLITES
 let sats = [];
 
-// ☄ ASTEROID
-let asteroidObj = null;
+// ☄ ASTEROIDS
+let asteroids = [];
 
-// 🛰 DEPLOY
+// 🎯 GAME STATE
+let hp = 100;
+let score = 0;
+
+// 🛰 DEPLOY SAT
 function deploy(){
-  let sat = new THREE.Mesh(
+  let s = new THREE.Mesh(
     new THREE.SphereGeometry(0.08,8,8),
     new THREE.MeshBasicMaterial({color:0xffffff})
   );
 
-  sat.userData = {
-    angle: Math.random()*Math.PI*2,
-    radius: 3
-  };
-
-  sats.push(sat);
-  scene.add(sat);
+  s.userData = {angle:Math.random()*Math.PI*2, radius:3};
+  sats.push(s);
+  scene.add(s);
 
   document.getElementById("sat").innerText = sats.length;
 }
 
-// ⚠ ANOMALY
-function anomaly(){
-  document.getElementById("alert").innerText = "⚠ SPACE ANOMALY DETECTED";
-  document.getElementById("alert").style.display="block";
-  document.getElementById("status").innerText="THREAT ACTIVE";
+// ☄ SPAWN WAVE
+function startWave(){
+  for(let i=0;i<5;i++){
+    let a = new THREE.Mesh(
+      new THREE.SphereGeometry(0.2,16,16),
+      new THREE.MeshBasicMaterial({color:0xff0000})
+    );
 
-  setTimeout(()=>{
-    document.getElementById("alert").style.display="none";
-    document.getElementById("status").innerText="STABLE";
-  },3000);
+    a.position.set(6+Math.random()*3, Math.random()*2,0);
+    asteroids.push(a);
+    scene.add(a);
+  }
+
+  alertMsg("☄ ASTEROID WAVE INCOMING");
 }
 
-// ☄ ASTEROID
-function asteroid(){
-  asteroidObj = new THREE.Mesh(
-    new THREE.SphereGeometry(0.3,16,16),
-    new THREE.MeshBasicMaterial({color:0xff0000})
-  );
-
-  asteroidObj.position.set(5,2,0);
-  scene.add(asteroidObj);
-
-  document.getElementById("alert").innerText="☄ ASTEROID INBOUND!";
-  document.getElementById("alert").style.display="block";
-}
-
-// 🔫 FIRE BEAM
+// 🔫 FIRE LASER
 function fire(){
-  let beam = document.getElementById("beam");
-  beam.style.display="block";
-  beam.style.left = "50%";
-  beam.style.top = "40%";
+  if(asteroids.length>0){
+    let hit = asteroids.pop();
+    scene.remove(hit);
 
+    score += 10;
+    document.getElementById("score").innerText = score;
+
+    flash();
+  }
+}
+
+// ⚡ FLASH EFFECT
+function flash(){
   document.body.style.filter="brightness(2)";
+  setTimeout(()=>document.body.style.filter="none",100);
+}
 
-  setTimeout(()=>{
-    beam.style.display="none";
-    document.body.style.filter="none";
+// ⚠ ALERT
+function alertMsg(t){
+  let a=document.getElementById("alert");
+  a.innerText=t;
+  a.style.display="block";
 
-    if(asteroidObj){
-      scene.remove(asteroidObj);
-      asteroidObj=null;
-      document.getElementById("alert").innerText="☄ TARGET DESTROYED";
-    }
-  },500);
+  setTimeout(()=>a.style.display="none",2000);
 }
 
 // 🔄 RESET
 function reset(){
   sats.forEach(s=>scene.remove(s));
-  sats=[];
-  document.getElementById("sat").innerText=0;
+  asteroids.forEach(a=>scene.remove(a));
 
-  if(asteroidObj) scene.remove(asteroidObj);
-  asteroidObj=null;
+  sats=[];
+  asteroids=[];
+
+  hp=100;
+  score=0;
+
+  document.getElementById("hp").innerText=hp;
+  document.getElementById("score").innerText=score;
+  document.getElementById("sat").innerText=0;
 }
 
-// 🌌 ANIMATE LOOP
+// 🌌 GAME LOOP
 function animate(){
   requestAnimationFrame(animate);
 
@@ -210,9 +201,19 @@ function animate(){
     s.position.z = Math.sin(s.userData.angle)*s.userData.radius;
   });
 
-  if(asteroidObj){
-    asteroidObj.position.x -= 0.03;
-  }
+  asteroids.forEach(a=>{
+    a.position.x -= 0.02;
+
+    // 💥 HIT EARTH
+    if(a.position.x < -2){
+      hp -= 10;
+      document.getElementById("hp").innerText = hp;
+      scene.remove(a);
+      asteroids = asteroids.filter(x=>x!==a);
+
+      alertMsg("⚠ EARTH HIT!");
+    }
+  });
 
   renderer.render(scene,camera);
 }
