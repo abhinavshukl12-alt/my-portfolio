@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>OMEGA X</title>
+
+<style>
+body{
+  margin:0;
+  background:black;
+  color:#00ffe1;
+  font-family:monospace;
+  text-align:center;
+}
+
+h1{
+  margin-top:40px;
+  text-shadow:0 0 10px #00ffe1;
+}
+
+.console{
+  border:1px solid #00ffe1;
+  width:80%;
+  margin:20px auto;
+  height:250px;
+  overflow:auto;
+  padding:10px;
+}
+
+button{
+  margin:5px;
+  padding:10px;
+  background:black;
+  color:#00ffe1;
+  border:1px solid #00ffe1;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#00ffe1;
+  color:black;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🌌 OMEGA X SYSTEM</h1>
+
+<div class="console" id="console">> SYSTEM ONLINE<br></div>
+
+<button onclick="cmd('scan anomaly')">SCAN</button>
+<button onclick="cmd('deploy satellites')">SATELLITES</button>
+<button onclick="cmd('activate core')">CORE</button>
+<button onclick="cmd('status report')">STATUS</button>
+
+<script>
+
+let c = document.getElementById("console");
+
+function cmd(t){
+  c.innerHTML += "<br>> " + t.toUpperCase();
+  c.scrollTop = c.scrollHeight;
+
+  if(t==="scan anomaly"){
+    c.innerHTML += "<br>⚠ anomaly detected in deep space";
+  }
+
+  if(t==="deploy satellites"){
+    c.innerHTML += "<br>🛰 satellites expanding network...";
+  }
+
+  if(t==="activate core"){
+    document.body.style.filter="hue-rotate(180deg)";
+    setTimeout(()=>document.body.style.filter="none",1000);
+  }
+
+  if(t==="status report"){
+    c.innerHTML += "<br>🧠 ALL SYSTEMS STABLE";
+  }
+}
+
+</script>
+
+</body>
+</html>
