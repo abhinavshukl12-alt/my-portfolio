@@ -3,7 +3,7 @@
 
 <head>
 
-<title>Neon To-Do App</title>
+<title>Daily Goal Tracker</title>
 
 <style>
 
@@ -19,21 +19,19 @@ body {
 
     justify-content: center;
 
-    align-items: center;
-
-    height: 100vh;
+    padding-top: 40px;
 }
 
 .container {
 
+    width: 400px;
+
     background:
     rgba(255,255,255,0.05);
 
-    padding: 25px;
+    padding: 20px;
 
     border-radius: 20px;
-
-    width: 350px;
 
     box-shadow:
     0 0 20px #38bdf8;
@@ -47,31 +45,23 @@ h1 {
     0 0 10px #38bdf8;
 }
 
-.input-area {
-
-    display: flex;
-
-    gap: 10px;
-}
-
-input {
-
-    flex: 1;
+input, button {
 
     padding: 10px;
 
     border: none;
 
     border-radius: 10px;
+
+    margin-top: 10px;
+}
+
+#taskInput {
+
+    width: 95%;
 }
 
 button {
-
-    padding: 10px;
-
-    border: none;
-
-    border-radius: 10px;
 
     background: #38bdf8;
 
@@ -83,8 +73,6 @@ ul {
     list-style: none;
 
     padding: 0;
-
-    margin-top: 20px;
 }
 
 li {
@@ -92,7 +80,7 @@ li {
     background:
     rgba(255,255,255,0.08);
 
-    margin-bottom: 10px;
+    margin-top: 10px;
 
     padding: 10px;
 
@@ -112,19 +100,20 @@ li {
     opacity: 0.6;
 }
 
+.date {
+
+    color: #38bdf8;
+
+    font-size: 14px;
+}
+
 .delete {
 
     background: red;
 
     color: white;
 
-    border: none;
-
     padding: 5px 8px;
-
-    border-radius: 8px;
-
-    cursor: pointer;
 }
 
 </style>
@@ -135,20 +124,18 @@ li {
 
 <div class="container">
 
-<h1>📋 Neon To-Do</h1>
+<h1>📅 Daily Goal Tracker</h1>
 
-<div class="input-area">
+<input type="date" id="date">
 
 <input
 type="text"
 id="taskInput"
-placeholder="Enter task...">
+placeholder="Enter today's target...">
 
 <button onclick="addTask()">
-Add
+Add Goal 🚀
 </button>
-
-</div>
 
 <ul id="taskList"></ul>
 
@@ -156,55 +143,117 @@ Add
 
 <script>
 
+let tasks =
+JSON.parse(localStorage.getItem("tasks"))
+|| [];
+
+function saveTasks() {
+
+    localStorage.setItem(
+        "tasks",
+        JSON.stringify(tasks)
+    );
+}
+
+function renderTasks() {
+
+    const list =
+    document.getElementById("taskList");
+
+    list.innerHTML = "";
+
+    tasks.forEach((task, index) => {
+
+        const li =
+        document.createElement("li");
+
+        li.innerHTML = `
+
+        <div>
+
+        <input
+        type="checkbox"
+        ${task.done ? "checked" : ""}
+        onchange="toggleTask(${index})">
+
+        <span class="${
+        task.done ? "completed" : ""
+        }">
+
+        ${task.text}
+
+        </span>
+
+        <div class="date">
+        📅 ${task.date}
+        </div>
+
+        </div>
+
+        <button
+        class="delete"
+        onclick="deleteTask(${index})">
+
+        X
+
+        </button>
+
+        `;
+
+        list.appendChild(li);
+    });
+}
+
 function addTask() {
 
-    let input =
+    const input =
     document.getElementById("taskInput");
 
-    let task =
-    input.value.trim();
+    const date =
+    document.getElementById("date");
 
-    if(task === "")
+    if(input.value.trim() === "")
     return;
 
-    let li =
-    document.createElement("li");
+    tasks.push({
 
-    li.innerHTML = `
+        text: input.value,
 
-    <span onclick="toggleTask(this)">
-    ${task}
-    </span>
+        date: date.value || "No Date",
 
-    <button
-    class="delete"
-    onclick="deleteTask(this)">
-    X
-    </button>
+        done: false
+    });
 
-    `;
+    saveTasks();
 
-    document
-    .getElementById("taskList")
-    .appendChild(li);
+    renderTasks();
 
     input.value = "";
 }
 
-function toggleTask(element) {
+function toggleTask(index) {
 
-    element.classList.toggle(
-    "completed"
-    );
+    tasks[index].done =
+    !tasks[index].done;
+
+    saveTasks();
+
+    renderTasks();
 }
 
-function deleteTask(button) {
+function deleteTask(index) {
 
-    button.parentElement.remove();
+    tasks.splice(index, 1);
+
+    saveTasks();
+
+    renderTasks();
 }
+
+renderTasks();
 
 </script>
 
 </body>
 
-</html> 
+</html>
