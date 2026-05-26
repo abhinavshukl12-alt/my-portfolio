@@ -1,81 +1,178 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>OMEGA X</title>
+<meta charset="UTF-8">
+<title>OMEGA X // CONTROL SYSTEM</title>
 
 <style>
 body{
   margin:0;
-  background:black;
-  color:#00ffe1;
-  font-family:monospace;
+  font-family: Arial, sans-serif;
+  color:white;
+  overflow:hidden;
+  background: #05060a;
+}
+
+/* 🌈 animated background */
+.bg{
+  position:fixed;
+  inset:0;
+  background: radial-gradient(circle at top, #0ff 0%, transparent 40%),
+              radial-gradient(circle at bottom, #a0f 0%, transparent 40%),
+              #05060a;
+  animation: move 6s infinite alternate;
+  z-index:-1;
+}
+
+@keyframes move{
+  0%{filter:hue-rotate(0deg);}
+  100%{filter:hue-rotate(60deg);}
+}
+
+/* 🧠 HEADER */
+header{
   text-align:center;
+  padding:40px;
 }
 
 h1{
-  margin-top:40px;
-  text-shadow:0 0 10px #00ffe1;
+  font-size:42px;
+  letter-spacing:2px;
 }
 
+.glow{
+  color:#00ffe1;
+  text-shadow:0 0 20px #00ffe1;
+}
+
+/* 📦 GRID */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+  padding:20px;
+}
+
+/* 🧊 GLASS CARDS */
+.card{
+  background: rgba(255,255,255,0.05);
+  border:1px solid rgba(0,255,225,0.3);
+  backdrop-filter: blur(10px);
+  padding:20px;
+  border-radius:15px;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform: translateY(-5px);
+  box-shadow:0 0 25px #00ffe1;
+}
+
+/* 🧠 TERMINAL */
 .console{
-  border:1px solid #00ffe1;
-  width:80%;
-  margin:20px auto;
-  height:250px;
+  height:200px;
   overflow:auto;
+  border:1px solid #00ffe1;
   padding:10px;
+  background:black;
 }
 
+/* 🔘 BUTTONS */
 button{
   margin:5px;
   padding:10px;
-  background:black;
-  color:#00ffe1;
-  border:1px solid #00ffe1;
+  border:none;
+  background:#00ffe1;
+  color:black;
   cursor:pointer;
+  border-radius:6px;
+  font-weight:bold;
 }
 
 button:hover{
-  background:#00ffe1;
-  color:black;
+  background:white;
+}
+
+/* ⚡ CORE */
+.core{
+  width:120px;
+  height:120px;
+  margin:auto;
+  border-radius:50%;
+  background: radial-gradient(circle,#00ffe1,#001);
+  box-shadow:0 0 40px #00ffe1;
+  animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.15);}
+  100%{transform:scale(1);}
 }
 </style>
 </head>
 
 <body>
 
-<h1>🌌 OMEGA X SYSTEM</h1>
+<div class="bg"></div>
 
-<div class="console" id="console">> SYSTEM ONLINE<br></div>
+<header>
+  <h1 class="glow">🌌 OMEGA X</h1>
+  <p>Next-Gen AI Control System Dashboard</p>
+</header>
 
-<button onclick="cmd('scan anomaly')">SCAN</button>
-<button onclick="cmd('deploy satellites')">SATELLITES</button>
-<button onclick="cmd('activate core')">CORE</button>
-<button onclick="cmd('status report')">STATUS</button>
+<div class="grid">
+
+  <!-- 🧠 TERMINAL -->
+  <div class="card">
+    <h3>🧠 AI TERMINAL</h3>
+    <div class="console" id="console">> SYSTEM READY<br></div>
+
+    <button onclick="cmd('scan anomaly')">SCAN</button>
+    <button onclick="cmd('deploy satellites')">SATELLITES</button>
+    <button onclick="cmd('activate core')">CORE</button>
+    <button onclick="cmd('status report')">STATUS</button>
+  </div>
+
+  <!-- 🌍 SYSTEM -->
+  <div class="card">
+    <h3>🌍 SYSTEM STATUS</h3>
+    <p>Neural Grid: ACTIVE</p>
+    <p>Satellites: 12 ONLINE</p>
+    <p>Core Energy: 87%</p>
+  </div>
+
+  <!-- ⚡ CORE -->
+  <div class="card">
+    <h3>⚡ CORE</h3>
+    <div class="core"></div>
+  </div>
+
+</div>
 
 <script>
 
-let c = document.getElementById("console");
+let c=document.getElementById("console");
 
 function cmd(t){
   c.innerHTML += "<br>> " + t.toUpperCase();
-  c.scrollTop = c.scrollHeight;
+  c.scrollTop=c.scrollHeight;
 
   if(t==="scan anomaly"){
-    c.innerHTML += "<br>⚠ anomaly detected in deep space";
+    c.innerHTML += "<br>⚠ unknown signal detected";
   }
 
   if(t==="deploy satellites"){
-    c.innerHTML += "<br>🛰 satellites expanding network...";
+    c.innerHTML += "<br>🛰 expanding orbital network...";
   }
 
   if(t==="activate core"){
-    document.body.style.filter="hue-rotate(180deg)";
-    setTimeout(()=>document.body.style.filter="none",1000);
+    document.body.style.filter="invert(1)";
+    setTimeout(()=>document.body.style.filter="none",800);
   }
 
   if(t==="status report"){
-    c.innerHTML += "<br>🧠 ALL SYSTEMS STABLE";
+    c.innerHTML += "<br>🧠 ALL SYSTEMS NOMINAL";
   }
 }
 
