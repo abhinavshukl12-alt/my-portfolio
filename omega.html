@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>OMEGA X // ORBITAL COMMAND</title>
+<title>OMEGA X // DEFENSE MODE</title>
 
 <style>
 body{
@@ -13,6 +13,7 @@ body{
   color:#00ffe1;
 }
 
+/* 🌍 UI */
 #ui{
   position:absolute;
   top:20px;
@@ -21,7 +22,7 @@ body{
 }
 
 .panel{
-  background:rgba(0,0,0,0.4);
+  background:rgba(0,0,0,0.5);
   border:1px solid #00ffe1;
   padding:10px;
   margin-bottom:10px;
@@ -42,6 +43,7 @@ button:hover{
   color:black;
 }
 
+/* ⚠ ALERT */
 #alert{
   position:absolute;
   bottom:20px;
@@ -49,6 +51,21 @@ button:hover{
   border:1px solid red;
   color:red;
   padding:10px;
+  display:none;
+  animation:blink 0.5s infinite;
+}
+
+@keyframes blink{
+  50%{opacity:0.2;}
+}
+
+/* 🔴 LASER BEAM */
+.beam{
+  position:absolute;
+  width:4px;
+  height:100px;
+  background:cyan;
+  box-shadow:0 0 20px cyan;
   display:none;
 }
 </style>
@@ -59,67 +76,76 @@ button:hover{
 <div id="ui">
 
   <div class="panel">
-    🌍 ORBITAL CONTROL<br><br>
-    <button onclick="deploySatellite()">🛰 DEPLOY SATELLITE</button>
-    <button onclick="triggerAnomaly()">⚠ ANOMALY SCAN</button>
-    <button onclick="resetSystem()">🔄 RESET</button>
+    🌌 OMEGA DEFENSE SYSTEM<br><br>
+
+    <button onclick="deploy()">🛰 DEPLOY SATELLITE</button>
+    <button onclick="anomaly()">⚠ ANOMALY ALERT</button>
+    <button onclick="fire()">🔫 FIRE DEFENSE BEAM</button>
+    <button onclick="asteroid()">☄ ASTEROID INCOMING</button>
+    <button onclick="reset()">🔄 RESET</button>
+
   </div>
 
   <div class="panel">
-    STATUS: <span id="status">STABLE</span><br>
-    SATELLITES: <span id="sat">0</span>
+    SATELLITES: <span id="sat">0</span><br>
+    STATUS: <span id="status">STABLE</span>
   </div>
 
 </div>
 
-<div id="alert">UNKNOWN ANOMALY DETECTED</div>
+<div id="alert">UNKNOWN THREAT DETECTED</div>
+<div class="beam" id="beam"></div>
 
-<!-- THREE.JS -->
+<!-- THREE JS -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.min.js"></script>
 
 <script>
 
 // 🌍 SCENE
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(75, innerWidth/innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({antialias:true});
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(innerWidth, innerHeight);
 document.body.appendChild(renderer.domElement);
 
 // 🌍 EARTH
-const earthGeo = new THREE.SphereGeometry(2, 32, 32);
-const earthMat = new THREE.MeshBasicMaterial({color:0x00ffe1, wireframe:true});
-const earth = new THREE.Mesh(earthGeo, earthMat);
+const earth = new THREE.Mesh(
+  new THREE.SphereGeometry(2,32,32),
+  new THREE.MeshBasicMaterial({color:0x00ffe1,wireframe:true})
+);
 scene.add(earth);
 
-// 🛰 SATELLITES
-let satellites = [];
-
-// CAMERA
 camera.position.z = 6;
 
-// 🛰 ADD SATELLITE
-function deploySatellite(){
-  let satGeo = new THREE.SphereGeometry(0.1, 8, 8);
-  let satMat = new THREE.MeshBasicMaterial({color:0xffffff});
-  let sat = new THREE.Mesh(satGeo, satMat);
+// 🛰 SATELLITES
+let sats = [];
 
-  let angle = Math.random()*Math.PI*2;
+// ☄ ASTEROID
+let asteroidObj = null;
+
+// 🛰 DEPLOY
+function deploy(){
+  let sat = new THREE.Mesh(
+    new THREE.SphereGeometry(0.08,8,8),
+    new THREE.MeshBasicMaterial({color:0xffffff})
+  );
+
   sat.userData = {
-    angle: angle,
+    angle: Math.random()*Math.PI*2,
     radius: 3
   };
 
-  satellites.push(sat);
+  sats.push(sat);
   scene.add(sat);
 
-  document.getElementById("sat").innerText = satellites.length;
+  document.getElementById("sat").innerText = sats.length;
 }
 
-// ⚠ ANOMALY EVENT
-function triggerAnomaly(){
+// ⚠ ANOMALY
+function anomaly(){
+  document.getElementById("alert").innerText = "⚠ SPACE ANOMALY DETECTED";
   document.getElementById("alert").style.display="block";
-  document.getElementById("status").innerText="THREAT DETECTED";
+  document.getElementById("status").innerText="THREAT ACTIVE";
 
   setTimeout(()=>{
     document.getElementById("alert").style.display="none";
@@ -127,26 +153,68 @@ function triggerAnomaly(){
   },3000);
 }
 
-// 🔄 RESET
-function resetSystem(){
-  satellites.forEach(s=>scene.remove(s));
-  satellites=[];
-  document.getElementById("sat").innerText="0";
+// ☄ ASTEROID
+function asteroid(){
+  asteroidObj = new THREE.Mesh(
+    new THREE.SphereGeometry(0.3,16,16),
+    new THREE.MeshBasicMaterial({color:0xff0000})
+  );
+
+  asteroidObj.position.set(5,2,0);
+  scene.add(asteroidObj);
+
+  document.getElementById("alert").innerText="☄ ASTEROID INBOUND!";
+  document.getElementById("alert").style.display="block";
 }
 
-// 🌌 ANIMATION LOOP
+// 🔫 FIRE BEAM
+function fire(){
+  let beam = document.getElementById("beam");
+  beam.style.display="block";
+  beam.style.left = "50%";
+  beam.style.top = "40%";
+
+  document.body.style.filter="brightness(2)";
+
+  setTimeout(()=>{
+    beam.style.display="none";
+    document.body.style.filter="none";
+
+    if(asteroidObj){
+      scene.remove(asteroidObj);
+      asteroidObj=null;
+      document.getElementById("alert").innerText="☄ TARGET DESTROYED";
+    }
+  },500);
+}
+
+// 🔄 RESET
+function reset(){
+  sats.forEach(s=>scene.remove(s));
+  sats=[];
+  document.getElementById("sat").innerText=0;
+
+  if(asteroidObj) scene.remove(asteroidObj);
+  asteroidObj=null;
+}
+
+// 🌌 ANIMATE LOOP
 function animate(){
   requestAnimationFrame(animate);
 
   earth.rotation.y += 0.002;
 
-  satellites.forEach(s=>{
+  sats.forEach(s=>{
     s.userData.angle += 0.02;
     s.position.x = Math.cos(s.userData.angle)*s.userData.radius;
     s.position.z = Math.sin(s.userData.angle)*s.userData.radius;
   });
 
-  renderer.render(scene, camera);
+  if(asteroidObj){
+    asteroidObj.position.x -= 0.03;
+  }
+
+  renderer.render(scene,camera);
 }
 
 animate();
