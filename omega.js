@@ -167,3 +167,103 @@ setTimeout(() => {
     );
 
 }, 4000);
+/* orb follows mouse */
+
+const orb =
+document.getElementById("orb");
+
+document.addEventListener(
+"mousemove",
+
+e => {
+
+    orb.style.left =
+    e.clientX + "px";
+
+    orb.style.top =
+    e.clientY + "px";
+});
+
+/* particle system */
+
+const canvas =
+document.getElementById(
+"particles"
+);
+
+const ctx =
+canvas.getContext("2d");
+
+canvas.width =
+window.innerWidth;
+
+canvas.height =
+window.innerHeight;
+
+let particles = [];
+
+document.addEventListener(
+"mousemove",
+
+e => {
+
+    particles.push({
+
+        x: e.clientX,
+
+        y: e.clientY,
+
+        size: 8,
+
+        alpha: 1
+    });
+});
+
+function animateParticles() {
+
+    ctx.clearRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+    );
+
+    particles.forEach(
+
+    (p, index) => {
+
+        ctx.fillStyle =
+        `rgba(56,189,248,
+        ${p.alpha})`;
+
+        ctx.beginPath();
+
+        ctx.arc(
+        p.x,
+        p.y,
+        p.size,
+        0,
+        Math.PI * 2
+        );
+
+        ctx.fill();
+
+        p.size *= 0.96;
+
+        p.alpha *= 0.96;
+
+        if(p.alpha < 0.05) {
+
+            particles.splice(
+            index,
+            1
+            );
+        }
+    });
+
+    requestAnimationFrame(
+    animateParticles
+    );
+}
+
+animateParticles();
