@@ -9,23 +9,23 @@ async function askRealAI() {
     if(input.trim() === "") {
 
         output.innerText =
-        "Type something first ⚡";
+        "⚠ Type something first";
 
         return;
     }
 
     output.innerText =
-    "🤖 Thinking...";
+    "🤖 CLAUDE AI THINKING...";
 
     const API_KEY =
-    "AIzaSyC2diwYov95mvzaaZBwsQ-Dndd1co7U2Mk";
+    "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";
 
     try {
 
         const response =
         await fetch(
 
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + API_KEY,
+        "https://api.anthropic.com/v1/messages",
 
         {
 
@@ -34,29 +34,32 @@ async function askRealAI() {
             headers: {
 
                 "Content-Type":
-                "application/json"
+                "application/json",
+
+                "x-api-key":
+                API_KEY,
+
+                "anthropic-version":
+                "2023-06-01"
             },
 
             body: JSON.stringify({
 
-                contents: [
+                model:
+                "claude-3-haiku-20240307",
+
+                max_tokens: 300,
+
+                messages: [
 
                 {
 
-                    parts: [
+                    role: "user",
 
-                    {
-
-                        text: input
-
-                    }
-
-                    ]
-
+                    content: input
                 }
 
                 ]
-
             })
         });
 
@@ -65,28 +68,34 @@ async function askRealAI() {
 
         console.log(data);
 
-        if(data.candidates) {
+        if(data.content) {
 
             output.innerText =
 
-            data.candidates[0]
-            .content.parts[0].text;
+            data.content[0].text;
+        }
+
+        else if(data.error) {
+
+            output.innerText =
+
+            "⚠ " +
+            data.error.message;
         }
 
         else {
 
             output.innerText =
-            "⚠ API ERROR";
-
-            console.log(data);
+            "⚠ No response";
         }
+
     }
 
     catch(error) {
 
-        output.innerText =
-        "⚠ SYSTEM ERROR";
-
         console.log(error);
+
+        output.innerText =
+        "⚠ System Error";
     }
 }
