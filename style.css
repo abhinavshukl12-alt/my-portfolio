@@ -320,3 +320,26 @@ body::after {
         transform: scale(0);
     }
 }
+section {
+
+    animation:
+    floatPanel 5s ease-in-out infinite;
+}
+
+@keyframes floatPanel {
+
+    0% {
+
+        transform: translateY(0);
+    }
+
+    50% {
+
+        transform: translateY(-8px);
+    }
+
+    100% {
+
+        transform: translateY(0);
+    }
+}
