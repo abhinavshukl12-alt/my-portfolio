@@ -50,7 +50,7 @@ e => {
     }, 500);
 });
 const text =
-"ABHINAV // FUTURE TECH CREATOR";
+"Mr.ABHINAV SHUKLA  {Future IFS & Tech Creator}";
 
 let i = 0;
 
