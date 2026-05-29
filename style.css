@@ -248,3 +248,40 @@ body::before {
         translateY(50px);
     }
 }
+.trail {
+
+    position: absolute;
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #38bdf8;
+
+    box-shadow:
+    0 0 15px #38bdf8;
+
+    pointer-events: none;
+
+    animation:
+    fadeTrail 0.5s linear;
+}
+
+@keyframes fadeTrail {
+
+    from {
+
+        opacity: 1;
+
+        transform: scale(1);
+    }
+
+    to {
+
+        opacity: 0;
+
+        transform: scale(0);
+    }
+}
