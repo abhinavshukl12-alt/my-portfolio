@@ -339,7 +339,12 @@ section {
     }
 
     100% {
-
+#omega{
+    text-shadow:
+        0 0 10px yellow,
+        0 0 20px gold,
+        0 0 40px orange;
+}
         transform: translateY(0);
     }
 }
