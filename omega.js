@@ -1,13 +1,14 @@
 const omega = document.createElement("div");
 
-omega.innerHTML = "🟡";
+omega.id = "omega";
 
-omega.style.position = "fixed";
-omega.style.left = "200px";
-omega.style.bottom = "100px";
-omega.style.fontSize = "80px";
-omega.style.zIndex = "999999";
-omega.style.pointerEvents = "none";
+omega.innerHTML = `
+<div class="head">
+    <div class="eye left-eye"></div>
+    <div class="eye right-eye"></div>
+</div>
+<div class="body"></div>
+`;
 
 document.body.appendChild(omega);
 
@@ -16,15 +17,13 @@ let dir = 1;
 
 function animate() {
 
-    x += dir * 3;
+    x += dir * 2;
 
-    if (x > window.innerWidth - 100) {
+    if (x > window.innerWidth - 100)
         dir = -1;
-    }
 
-    if (x < 0) {
+    if (x < 0)
         dir = 1;
-    }
 
     omega.style.left = x + "px";
 
@@ -32,3 +31,28 @@ function animate() {
 }
 
 animate();
+
+document.addEventListener("mousemove", (e) => {
+
+    const eyes = document.querySelectorAll(".eye");
+
+    eyes.forEach(eye => {
+
+        const rect = eye.getBoundingClientRect();
+
+        const eyeX = rect.left + rect.width / 2;
+        const eyeY = rect.top + rect.height / 2;
+
+        const angle = Math.atan2(
+            e.clientY - eyeY,
+            e.clientX - eyeX
+        );
+
+        const pupilX = Math.cos(angle) * 3;
+        const pupilY = Math.sin(angle) * 3;
+
+        eye.style.transform =
+            `translate(${pupilX}px, ${pupilY}px)`;
+    });
+
+});
