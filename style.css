@@ -348,3 +348,44 @@ section {
         transform: translateY(0);
     }
 }
+#omega{
+    position:fixed;
+    bottom:80px;
+    left:200px;
+    width:60px;
+    height:120px;
+    z-index:999999;
+}
+
+.head{
+    width:40px;
+    height:40px;
+    background:#ffd700;
+    border-radius:50%;
+    margin:auto;
+    position:relative;
+}
+
+.eye{
+    width:6px;
+    height:6px;
+    background:black;
+    border-radius:50%;
+    position:absolute;
+    top:14px;
+}
+
+.left-eye{
+    left:10px;
+}
+
+.right-eye{
+    right:10px;
+}
+
+.body{
+    width:6px;
+    height:60px;
+    background:#ffd700;
+    margin:auto;
+}
