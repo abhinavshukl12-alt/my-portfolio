@@ -389,3 +389,81 @@ section {
     background:#ffd700;
     margin:auto;
 }
+#omega{
+    position:fixed;
+    bottom:80px;
+    left:200px;
+    width:80px;
+    height:150px;
+    z-index:999999;
+}
+
+.head{
+    width:40px;
+    height:40px;
+    background:#ffd700;
+    border-radius:50%;
+    margin:auto;
+    position:relative;
+}
+
+.eye{
+    width:6px;
+    height:6px;
+    background:black;
+    border-radius:50%;
+    position:absolute;
+    top:14px;
+}
+
+.left-eye{
+    left:10px;
+}
+
+.right-eye{
+    right:10px;
+}
+
+.body{
+    width:6px;
+    height:50px;
+    background:#ffd700;
+    margin:auto;
+    position:relative;
+}
+
+.arm{
+    position:absolute;
+    width:35px;
+    height:4px;
+    background:#ffd700;
+    top:15px;
+}
+
+.left-arm{
+    left:-30px;
+    transform:rotate(25deg);
+}
+
+.right-arm{
+    right:-30px;
+    transform:rotate(-25deg);
+}
+
+.leg{
+    position:absolute;
+    width:35px;
+    height:4px;
+    background:#ffd700;
+    top:48px;
+}
+
+.left-leg{
+    left:-15px;
+    transform:rotate(35deg);
+}
+
+.right-leg{
+    right:-15px;
+    transform:rotate(-35deg);
+}
