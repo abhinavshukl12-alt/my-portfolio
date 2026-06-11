@@ -7,7 +7,15 @@ omega.innerHTML = `
     <div class="eye left-eye"></div>
     <div class="eye right-eye"></div>
 </div>
-<div class="body"></div>
+<div class="body">
+
+    <div class="arm left-arm"></div>
+    <div class="arm right-arm"></div>
+
+    <div class="leg left-leg"></div>
+    <div class="leg right-leg"></div>
+
+</div>
 `;
 
 document.body.appendChild(omega);
