@@ -1,179 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Abhinav — developer, creator and builder. Explore interactive projects, games, AI experiments and QuizLab.">
+  <title>ABHINAV // DIGITAL LAB</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+<body>
+  <div class="noise"></div>
+  <div class="grid-bg"></div>
+  <div class="cursor-glow"></div>
 
-<body><header class="hero">
-
-<img src="profile.png" class="profile">
-
-<h1 id="typing"></h1>
-
-<p>Future Developer & Creator</p>
-<div id="clock"></div>
-<button onclick="toggleTheme()">
-Toggle Theme
-</button>
-
-</header>
-
-    <!-- About Section -->
-    <section class="about">
-        <h2>About Me</h2>
-        <p>
-            I am learning programming, web development, and cloud skills.
-            My goal is to build real-world projects and grow my tech skills.
-        </p>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>Python (Beginner)</li>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>Video Editing</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>Dashboard 📊</h2>
-
-        <div class="card">
-            <p>Visitors Today: <span id="v"></span></p>
-            <p>Projects: 6</p>
-            <p>Status: ACTIVE ⚡</p>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects">
-        <h2>Projects 🚀</h2>
-
-        <div class="card">
-            <h3>🧠 QuizLab — Interactive Quiz Maker</h3>
-            <p>Create quizzes, play solo, or compete locally with 2–8 players.</p>
-            <a href="quizlab.html">
-                <button>Launch QuizLab</button>
-            </a>
-        </div>
-
-        <div class="card">
-            <h3>🐍 Neon Snake Game</h3>
-            <p>Classic snake game with neon effects.</p>
-            <a href="snake.html">
-                <button>Play Snake</button>
-            </a>
-        </div>
-
-        <div class="card">
-            <h3>🎮 Python Game</h3>
-            <p>Interactive game project built using Python.</p>
-            <a href="game.html">
-                <button>Play Now</button>
-            </a>
-        </div>
-
-        <div class="card">
-            <h3>🧪 Physics Sandboxel Simulator</h3>
-            <p>Interactive particle physics simulation playground built with HTML5 Canvas.</p>
-            <a href="simindex.html">
-                <button>Play Sandbox</button>
-            </a>
-        </div>
-
-        <div class="card">
-            <h3>🧮 Calculator App</h3>
-            <p>Simple web calculator project.</p>
-            <a href="calculator.html">
-                <button>Open App</button>
-            </a>
-        </div>
-
-        <div class="card">
-            <h3>📋 To-Do App</h3>
-            <p>Task management web application.</p>
-            <a href="todo.html">
-                <button>Try It</button>
-            </a>
-        </div>
-    </section>
-
-    <section>
-        <h2>AI Assistant 🤖</h2>
-
-        <input type="text" id="q" placeholder="Ask something...">
-
-        <button onclick="askRealAI()">
-            Ask AI
-        </button>
-
-        <p id="ans"></p>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact">
-
-        <h2>Contact 📩</h2>
-
-        <form action="https://formsubmit.co/abhinavshukla12@gmail.com" method="POST">
-
-            <input type="hidden" name="_captcha" value="false">
-
-            <input type="text" name="name" placeholder="Name" required>
-
-            <br><br>
-
-            <input type="email" name="email" placeholder="Email" required>
-
-            <br><br>
-
-            <textarea name="message" placeholder="Message"></textarea>
-
-            <br><br>
-
-            <button type="submit">
-                Send 🚀
-            </button>
-
-        </form>
-
-    </section>  
-
-    <!-- YouTube Popup -->
-    <div id="popup" class="popup">
-
-        <div class="popup-content">
-
-            <span class="close" onclick="closePopup()">
-                &times;
-            </span>
-
-            <h2>🚀 Join My YouTube Journey</h2>
-
-            <p>
-                Subscribe for coding, AI, projects & educational creator content ⚡
-            </p>
-
-            <a href="https://youtube.com/@abhinavconceptlab?si=k_OeOJy1caz5XrRM" target="_blank">
-
-                <button class="subscribe-btn">
-                    Subscribe 🔔
-                </button>
-
-            </a>
-
-        </div>
-
+  <nav class="nav">
+    <a class="brand" href="#top" aria-label="Home">
+      <span class="brand-mark">A</span>
+      <span>ABHINAV<span class="orange">.DEV</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#work">WORK</a>
+      <a href="#about">ABOUT</a>
+      <a href="#lab">LAB</a>
+      <a href="#contact">CONTACT</a>
     </div>
+    <button class="nav-status" onclick="toggleTheme()" title="Toggle theme">
+      <span class="status-dot"></span> SYSTEM
+    </button>
+  </nav>
 
-<script src="script.js"></script>
-<script src="ai.js"></script>    
-<script src="omega.js"></script>
+  <main id="top">
+    <section class="hero section-pad">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span class="pulse"></span> DIGITAL BUILDER / CREATOR</div>
+        <h1>I BUILD<br><span class="outline">THINGS</span><br>THAT MOVE.</h1>
+        <p class="hero-text">Developer, creator and curious builder exploring web experiences, games, AI and interactive tools.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#work">EXPLORE WORK <span>↗</span></a>
+          <a class="btn ghost" href="quizlab.html">LAUNCH QUIZLAB <span>→</span></a>
+        </div>
+      </div>
+
+      <div class="hero-orbit reveal delay-2">
+        <div class="orbit orbit-1"></div>
+        <div class="orbit orbit-2"></div>
+        <div class="orbit orbit-3"></div>
+        <div class="hero-core">
+          <div class="core-ring"></div>
+          <img src="profile.png" alt="Abhinav profile">
+        </div>
+        <div class="orbit-label label-1">BUILD</div>
+        <div class="orbit-label label-2">CREATE</div>
+        <div class="orbit-label label-3">LEARN</div>
+      </div>
+
+      <div class="hero-meta reveal delay-3">
+        <span>INDIA / 2026</span>
+        <span id="clock">--:--:--</span>
+        <span>AVAILABLE TO BUILD</span>
+      </div>
+    </section>
+
+    <section id="about" class="section-pad about-section">
+      <div class="section-head reveal">
+        <span class="section-no">01</span>
+        <div><span class="eyebrow">IDENTITY</span><h2>ABOUT THE BUILDER</h2></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-big reveal">
+          <p>I'm <strong>Abhinav</strong> — a student and developer learning by building real things.</p>
+          <p class="muted">From games and simulations to AI experiments and quiz platforms, this lab is where ideas become working projects.</p>
+        </div>
+        <div class="stats-panel reveal delay-1">
+          <div class="stat-row"><span>PROJECTS</span><strong data-count="6">0</strong></div>
+          <div class="stat-row"><span>INTERACTIVE APPS</span><strong data-count="5">0</strong></div>
+          <div class="stat-row"><span>STATUS</span><strong class="teal-text">ACTIVE</strong></div>
+          <div class="stat-row"><span>MODE</span><strong>BUILD / LEARN</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="section-pad work-section">
+      <div class="section-head reveal">
+        <span class="section-no">02</span>
+        <div><span class="eyebrow">SELECTED WORK</span><h2>THE LAB</h2></div>
+        <span class="section-side">06 PROJECTS / 2026</span>
+      </div>
+
+      <div class="project-grid">
+        <article class="project featured reveal">
+          <div class="project-top"><span>PROJECT // 001</span><span class="live">● LIVE</span></div>
+          <div class="project-icon">Q</div>
+          <h3>QUIZLAB</h3>
+          <p>Interactive quiz creation platform with Solo and Local Multiplayer modes, timers, streaks, scoring and live preview.</p>
+          <div class="tags"><span>HTML</span><span>JAVASCRIPT</span><span>GAME UI</span></div>
+          <a href="quizlab.html" class="project-link">LAUNCH QUIZLAB <span>↗</span></a>
+        </article>
+
+        <article class="project reveal delay-1">
+          <div class="project-top"><span>PROJECT // 002</span><span>GAME</span></div>
+          <div class="project-icon">蛇</div>
+          <h3>NEON SNAKE</h3>
+          <p>Arcade-style snake experience with a neon visual system.</p>
+          <div class="tags"><span>CANVAS</span><span>GAME</span></div>
+          <a href="snake.html" class="project-link">PLAY <span>↗</span></a>
+        </article>
+
+        <article class="project reveal delay-2">
+          <div class="project-top"><span>PROJECT // 003</span><span>SIM</span></div>
+          <div class="project-icon">∿</div>
+          <h3>PHYSICS SANDBOX</h3>
+          <p>Interactive particle physics playground built around HTML5 Canvas.</p>
+          <div class="tags"><span>CANVAS</span><span>PHYSICS</span></div>
+          <a href="simindex.html" class="project-link">ENTER SIM <span>↗</span></a>
+        </article>
+
+        <article class="project reveal">
+          <div class="project-top"><span>PROJECT // 004</span><span>PYTHON</span></div>
+          <div class="project-icon">⌘</div>
+          <h3>PYTHON GAME</h3>
+          <p>Interactive game experiment built while exploring programming.</p>
+          <div class="tags"><span>PYTHON</span><span>GAME</span></div>
+          <a href="game.html" class="project-link">PLAY <span>↗</span></a>
+        </article>
+
+        <article class="project reveal delay-1">
+          <div class="project-top"><span>PROJECT // 005</span><span>UTILITY</span></div>
+          <div class="project-icon">+</div>
+          <h3>CALCULATOR</h3>
+          <p>Clean browser calculator built as a practical web experiment.</p>
+          <div class="tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          <a href="calculator.html" class="project-link">OPEN APP <span>↗</span></a>
+        </article>
+
+        <article class="project reveal delay-2">
+          <div class="project-top"><span>PROJECT // 006</span><span>UTILITY</span></div>
+          <div class="project-icon">✓</div>
+          <h3>TO-DO SYSTEM</h3>
+          <p>Task management interface for organizing everyday work.</p>
+          <div class="tags"><span>WEB</span><span>PRODUCTIVITY</span></div>
+          <a href="todo.html" class="project-link">TRY IT <span>↗</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section id="lab" class="section-pad lab-section">
+      <div class="section-head reveal">
+        <span class="section-no">03</span>
+        <div><span class="eyebrow">EXPERIMENTAL SYSTEMS</span><h2>AI / LAB</h2></div>
+      </div>
+      <div class="terminal reveal">
+        <div class="terminal-bar"><span></span><span></span><span></span><b>ABHINAV_AI // TERMINAL</b><em>ONLINE</em></div>
+        <div class="terminal-body">
+          <div class="terminal-line"><span class="prompt">guest@abhinav:~$</span> whoami</div>
+          <div class="terminal-output">developer + creator + lifelong learner</div>
+          <div class="terminal-line"><span class="prompt">guest@abhinav:~$</span> ask --ai</div>
+          <div class="ai-box">
+            <input type="text" id="q" placeholder="Ask something..." autocomplete="off">
+            <button onclick="askRealAI()">SEND ↗</button>
+          </div>
+          <div id="ans" class="terminal-output ai-answer">AI SYSTEM READY. Ask a question above.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad dashboard-section">
+      <div class="dashboard reveal">
+        <div><span class="eyebrow">SYSTEM MONITOR</span><h2>BUILD STATUS</h2></div>
+        <div class="monitor-grid">
+          <div><span>VISITORS TODAY</span><strong id="v">—</strong></div>
+          <div><span>PROJECTS</span><strong>06</strong></div>
+          <div><span>UPTIME</span><strong>99.9%</strong></div>
+          <div><span>CORE STATUS</span><strong class="teal-text">● ONLINE</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-pad contact-section">
+      <div class="contact-card reveal">
+        <span class="eyebrow">04 / CONTACT</span>
+        <h2>HAVE AN IDEA?</h2>
+        <p>Let's turn it into something real.</p>
+        <form action="https://formsubmit.co/abhinavshukla12@gmail.com" method="POST">
+          <input type="hidden" name="_captcha" value="false">
+          <div class="form-grid">
+            <input type="text" name="name" placeholder="YOUR NAME" required>
+            <input type="email" name="email" placeholder="YOUR EMAIL" required>
+          </div>
+          <textarea name="message" placeholder="TELL ME ABOUT IT"></textarea>
+          <button class="btn primary" type="submit">SEND MESSAGE <span>↗</span></button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 ABHINAV // DIGITAL LAB</span>
+    <span>BUILT WITH CURIOSITY <b>✦</b></span>
+    <a href="https://youtube.com/@abhinavconceptlab?si=k_OeOJy1caz5XrRM" target="_blank" rel="noopener">YOUTUBE ↗</a>
+  </footer>
+
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <button class="close" onclick="closePopup()">×</button>
+      <span class="eyebrow">CREATOR CHANNEL</span>
+      <h2>JOIN THE JOURNEY</h2>
+      <p>Coding, AI, projects and educational creator content.</p>
+      <a href="https://youtube.com/@abhinavconceptlab?si=k_OeOJy1caz5XrRM" target="_blank" rel="noopener"><button class="btn primary">SUBSCRIBE ↗</button></a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="ai.js"></script>
+  <script src="omega.js"></script>
+  <script>
+    // V2 visual interactions; existing script/AI/omega files remain compatible.
+    const glow = document.querySelector('.cursor-glow');
+    window.addEventListener('pointermove', e => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+
+    const clock = document.getElementById('clock');
+    function updateClock(){
+      const now = new Date();
+      clock.textContent = now.toLocaleTimeString([], {hour12:false});
+    }
+    updateClock(); setInterval(updateClock, 1000);
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = +el.dataset.count;
+      let n = 0;
+      const step = Math.max(1, Math.ceil(target/18));
+      const run = () => {
+        n = Math.min(target, n + step);
+        el.textContent = n;
+        if(n < target) requestAnimationFrame(run);
+      };
+      obs.observe(el);
+      el.addEventListener('transitionend', run, {once:true});
+      setTimeout(run, 500);
+    });
+
+    function toggleTheme(){
+      document.body.classList.toggle('light-mode');
+      localStorage.setItem('portfolioTheme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+    }
+    if(localStorage.getItem('portfolioTheme') === 'light') document.body.classList.add('light-mode');
+
+    // Keeps the existing visitor element working even if script.js supplies its own value.
+    if(document.getElementById('v') && !document.getElementById('v').textContent.trim()){
+      document.getElementById('v').textContent = 'LIVE';
+    }
+  </script>
 </body>
 </html>
