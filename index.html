@@ -20,7 +20,7 @@ Toggle Theme
 </button>
 
 </header>
-  
+
     <!-- About Section -->
     <section class="about">
         <h2>About Me</h2>
@@ -40,19 +40,28 @@ Toggle Theme
             <li>Video Editing</li>
         </ul>
     </section>
-<section>
-<h2>Dashboard 📊</h2>
 
-<div class="card">
-    <p>Visitors Today: <span id="v"></span></p>
-    <p>Projects: 4</p>
-    <p>Status: ACTIVE ⚡</p>
-</div>
+    <section>
+        <h2>Dashboard 📊</h2>
 
-</section>
+        <div class="card">
+            <p>Visitors Today: <span id="v"></span></p>
+            <p>Projects: 6</p>
+            <p>Status: ACTIVE ⚡</p>
+        </div>
+    </section>
+
     <!-- Projects Section -->
- <section class="projects">
+    <section class="projects">
         <h2>Projects 🚀</h2>
+
+        <div class="card">
+            <h3>🧠 QuizLab — Interactive Quiz Maker</h3>
+            <p>Create quizzes, play solo, or compete locally with 2–8 players.</p>
+            <a href="quizlab.html">
+                <button>Launch QuizLab</button>
+            </a>
+        </div>
 
         <div class="card">
             <h3>🐍 Neon Snake Game</h3>
@@ -95,76 +104,74 @@ Toggle Theme
         </div>
     </section>
 
-</section>
-    
-<section>
-    
-<h2>AI Assistant 🤖</h2>
+    <section>
+        <h2>AI Assistant 🤖</h2>
 
-<input type="text" id="q" placeholder="Ask something...">
+        <input type="text" id="q" placeholder="Ask something...">
 
-<button onclick="askRealAI()">
-Ask AI
-</button>
+        <button onclick="askRealAI()">
+            Ask AI
+        </button>
 
-<p id="ans"></p>
+        <p id="ans"></p>
+    </section>
 
-</section>
     <!-- Contact Section -->
- <section class="contact">
+    <section class="contact">
 
-<h2>Contact 📩</h2>
+        <h2>Contact 📩</h2>
 
-<form action="https://formsubmit.co/abhinavshukl12@gmail.com" method="POST">
+        <form action="https://formsubmit.co/abhinavshukla12@gmail.com" method="POST">
 
-<input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_captcha" value="false">
 
-<input type="text" name="name" placeholder="Name" required>
+            <input type="text" name="name" placeholder="Name" required>
 
-<br><br>
+            <br><br>
 
-<input type="email" name="email" placeholder="Email" required>
+            <input type="email" name="email" placeholder="Email" required>
 
-<br><br>
+            <br><br>
 
-<textarea name="message" placeholder="Message"></textarea>
+            <textarea name="message" placeholder="Message"></textarea>
 
-<br><br>
+            <br><br>
 
-<button type="submit">
-Send 🚀
-</button>
+            <button type="submit">
+                Send 🚀
+            </button>
 
-</form>
+        </form>
 
-</section>  
-<!-- YouTube Popup -->
+    </section>  
 
-<div id="popup" class="popup">
+    <!-- YouTube Popup -->
+    <div id="popup" class="popup">
 
-<div class="popup-content">
+        <div class="popup-content">
 
-<span class="close" onclick="closePopup()">
-&times;
-</span>
+            <span class="close" onclick="closePopup()">
+                &times;
+            </span>
 
-<h2>🚀 Join My YouTube Journey</h2>
+            <h2>🚀 Join My YouTube Journey</h2>
 
-<p>
-Subscribe for coding, AI, projects & educational creator content ⚡
-</p>
+            <p>
+                Subscribe for coding, AI, projects & educational creator content ⚡
+            </p>
 
-<a href="https://youtube.com/@abhinavconceptlab?si=k_OeOJy1caz5XrRM" target="_blank">
+            <a href="https://youtube.com/@abhinavconceptlab?si=k_OeOJy1caz5XrRM" target="_blank">
 
-<button class="subscribe-btn">
-Subscribe 🔔
-</button>
+                <button class="subscribe-btn">
+                    Subscribe 🔔
+                </button>
 
-</a>
+            </a>
 
-</div>
+        </div>
 
-</div>
+    </div>
+
 <script src="script.js"></script>
 <script src="ai.js"></script>    
 <script src="omega.js"></script>
