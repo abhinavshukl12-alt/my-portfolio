@@ -1,93 +1,764 @@
 <!doctype html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
+<meta name="theme-color" content="#0d0e0c">
+<meta name="description" content="Abhinav — Developer, Creator & Builder. A digital playground of interactive experiments, games and tools.">
+
 <title>Abhinav — Digital Playground</title>
+
 <link rel="stylesheet" href="style.css">
+
+<!-- Premium fonts -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
 </head>
+
 <body>
-<div class="loader"><strong>A/</strong><span></span></div>
-<div class="grain"></div><canvas id="life"></canvas>
-<div class="cursor"><i></i></div>
+
+<!-- =====================================================
+     LOADING EXPERIENCE
+===================================================== -->
+
+<div class="loader" aria-hidden="true">
+    <strong>A/</strong>
+    <span></span>
+</div>
+
+<!-- Ambient visual layers -->
+
+<div class="grain"></div>
+<canvas id="life"></canvas>
+
+<!-- Custom cursor -->
+
+<div class="cursor" aria-hidden="true">
+    <i></i>
+</div>
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
 <nav>
-  <a class="mark" href="#top">A<span>/</span></a>
-  <div class="links"><a href="#work">WORK</a><a href="#about">ABOUT</a><a href="#lab">LAB</a></div>
-  <a href="#contact" class="talk">LET'S TALK ↗</a>
+
+```
+<a class="mark" href="#top" aria-label="Back to top">
+    A<span>/</span>
+</a>
+
+<div class="links">
+    <a href="#work">WORK</a>
+    <a href="#about">ABOUT</a>
+    <a href="#lab">LAB</a>
+</div>
+
+<a href="#contact" class="talk">
+    LET'S TALK ↗
+</a>
+```
+
 </nav>
 
 <main id="top">
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
 <section class="hero">
-  <div class="eyebrow"><span>INDIA / 2026</span><span>DEVELOPER · CREATOR · BUILDER</span></div>
-  <div class="hero-stage">
+
+```
+<div class="eyebrow">
+    <span>INDIA / 2026</span>
+    <span>DEVELOPER · CREATOR · BUILDER</span>
+</div>
+
+
+<div class="hero-stage">
+
     <div class="hero-copy">
-      <p class="micro">WELCOME TO MY DIGITAL PLAYGROUND</p>
-      <h1><span>I MAKE</span><em>IDEAS</em><span>MOVE.</span></h1>
-      <p class="lead">I build interactive websites, games, experiments and tools — learning by making things that feel alive.</p>
-      <a class="round-link" href="#work">EXPLORE<br><b>↓</b></a>
+
+        <p class="micro">
+            WELCOME TO MY DIGITAL PLAYGROUND
+        </p>
+
+        <h1>
+            <span>I MAKE</span>
+            <em>IDEAS</em>
+            <span>MOVE.</span>
+        </h1>
+
+        <p class="lead">
+            I build interactive websites, games,
+            experiments and tools — learning by
+            making things that feel alive.
+        </p>
+
+
+        <a class="round-link" href="#work">
+
+            <span>
+                EXPLORE
+                <br>
+                <b>↓</b>
+            </span>
+
+        </a>
+
     </div>
+
+
+    <!-- Interactive portrait -->
+
     <div class="portrait">
-      <div class="portrait-glow"></div><img src="profile.png" alt="Abhinav">
-      <span>ABHINAV<br>SHUKLA</span>
+
+        <div class="portrait-glow"></div>
+
+        <img
+            src="profile.png"
+            alt="Abhinav"
+            loading="eager"
+        >
+
+        <span>
+            ABHINAV
+            <br>
+            SHUKLA
+        </span>
+
     </div>
-  </div>
-  <div class="hero-foot"><span>SCROLL TO DISCOVER</span><span>✦ ✦ ✦</span></div>
+
+</div>
+
+
+<div class="hero-foot">
+
+    <span>
+        SCROLL TO DISCOVER
+    </span>
+
+    <span>
+        ✦ ✦ ✦
+    </span>
+
+</div>
+```
+
 </section>
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
 
 <section id="about" class="about">
-  <div class="label">01 — ABOUT</div>
-  <div class="about-grid reveal">
-    <h2>Curious<br><i>by nature.</i></h2>
-    <div><p class="large">I don't just want to learn technology. I want to <i>use it</i> to make things people can experience.</p><p class="muted">Web development, Python, AI, games, simulations and whatever interesting idea comes next. This site is the playground.</p></div>
-  </div>
-  <div class="ticker"><div>HTML <b>✦</b> CSS <b>✦</b> JAVASCRIPT <b>✦</b> PYTHON <b>✦</b> AI <b>✦</b> CREATIVE CODE <b>✦</b> GAMES <b>✦</b> </div></div>
+
+```
+<div class="label">
+    01 — ABOUT
+</div>
+
+
+<div class="about-grid reveal">
+
+    <h2>
+        Curious
+        <br>
+        <i>by nature.</i>
+    </h2>
+
+
+    <div>
+
+        <p class="large">
+            I don't just want to learn technology.
+            I want to <i>use it</i> to make things
+            people can experience.
+        </p>
+
+        <p class="muted">
+            Web development, Python, AI, games,
+            simulations and whatever interesting
+            idea comes next. This site is the
+            playground.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- Infinite skills ticker -->
+
+<div class="ticker">
+
+    <div>
+        HTML <b>✦</b>
+        CSS <b>✦</b>
+        JAVASCRIPT <b>✦</b>
+        PYTHON <b>✦</b>
+        AI <b>✦</b>
+        CREATIVE CODE <b>✦</b>
+        GAMES <b>✦</b>
+
+        HTML <b>✦</b>
+        CSS <b>✦</b>
+        JAVASCRIPT <b>✦</b>
+        PYTHON <b>✦</b>
+        AI <b>✦</b>
+        CREATIVE CODE <b>✦</b>
+        GAMES <b>✦</b>
+    </div>
+
+</div>
+```
+
 </section>
+
+<!-- =====================================================
+     SELECTED WORK
+===================================================== -->
 
 <section id="work" class="work">
-  <div class="work-head"><div class="label">02 — SELECTED WORK</div><p>Hover. Explore.<br>Play.</p></div>
-  <article class="feature reveal" data-tilt>
-    <a href="quizlab.html" class="feature-visual">
-      <div class="quiz-card"><small>QUIZLAB / 01</small><strong>WHAT WILL<br>YOU BUILD?</strong><div class="answers"><i>A</i><i>B</i><i>C</i><i>D</i></div></div>
-      <span class="stamp">ENTER QUIZLAB ↗</span>
-    </a>
-    <div class="feature-info"><div class="meta"><span>01 / INTERACTIVE PLATFORM</span><span>2026</span></div><h2>QuizLab<span>.</span></h2><p>A quiz maker designed to become a game: create questions, play solo or locally with friends, race the timer and chase the score.</p><div class="tags"><b>WEB</b><b>JAVASCRIPT</b><b>GAME UI</b></div><a href="quizlab.html" class="big-arrow">OPEN PROJECT <span>↗</span></a></div>
-  </article>
 
-  <div class="grid">
-    <article class="project reveal" data-tilt><a href="snake.html"><div class="visual snake"><span>●━━●━━◉</span></div><div class="meta">02 / GAME <i>↗</i></div><h3>Neon Snake</h3><p>Classic arcade energy, rebuilt for the browser.</p></a></article>
-    <article class="project reveal" data-tilt><a href="simindex.html"><div class="visual particles"><i></i><i></i><i></i><i></i></div><div class="meta">03 / SIMULATION <i>↗</i></div><h3>Physics Sandbox</h3><p>A playground for particles, motion and experiments.</p></a></article>
-    <article class="project reveal" data-tilt><a href="game.html"><div class="visual py"><span>PY</span></div><div class="meta">04 / EXPERIMENT <i>↗</i></div><h3>Python Game</h3><p>Learning programming by turning logic into play.</p></a></article>
-    <article class="project reveal" data-tilt><a href="calculator.html"><div class="visual calc"><span>+ − × ÷</span></div><div class="meta">05 / UTILITY <i>↗</i></div><h3>Calculator</h3><p>A tiny tool with a clean interface.</p></a></article>
-    <article class="project wide reveal" data-tilt><a href="todo.html"><div class="visual todo"><span>PLAN → BUILD → SHIP → REPEAT</span></div><div class="meta">06 / PRODUCTIVITY <i>↗</i></div><h3>To-Do System</h3><p>Organize the work, then get back to building.</p></a></article>
-  </div>
+```
+<div class="work-head">
+
+    <div class="label">
+        02 — SELECTED WORK
+    </div>
+
+    <p>
+        Hover.
+        <br>
+        Explore.
+        <br>
+        Play.
+    </p>
+
+</div>
+
+
+<!-- =================================================
+     FEATURE PROJECT — QUIZLAB
+================================================= -->
+
+<article
+    class="feature reveal"
+    data-tilt
+>
+
+    <a
+        href="quizlab.html"
+        class="feature-visual"
+        aria-label="Open QuizLab"
+    >
+
+        <div class="quiz-card">
+
+            <small>
+                QUIZLAB / 01
+            </small>
+
+            <strong>
+                WHAT WILL
+                <br>
+                YOU BUILD?
+            </strong>
+
+
+            <div class="answers">
+
+                <i>A</i>
+                <i>B</i>
+                <i>C</i>
+                <i>D</i>
+
+            </div>
+
+        </div>
+
+
+        <span class="stamp">
+            ENTER QUIZLAB ↗
+        </span>
+
+    </a>
+
+
+    <div class="feature-info">
+
+        <div class="meta">
+
+            <span>
+                01 / INTERACTIVE PLATFORM
+            </span>
+
+            <span>
+                2026
+            </span>
+
+        </div>
+
+
+        <h2>
+            QuizLab<span>.</span>
+        </h2>
+
+
+        <p>
+            A quiz maker designed to become a game:
+            create questions, play solo or locally
+            with friends, race the timer and chase
+            the score.
+        </p>
+
+
+        <div class="tags">
+
+            <b>WEB</b>
+            <b>JAVASCRIPT</b>
+            <b>GAME UI</b>
+
+        </div>
+
+
+        <a
+            href="quizlab.html"
+            class="big-arrow"
+        >
+            OPEN PROJECT
+            <span>↗</span>
+        </a>
+
+    </div>
+
+</article>
+
+
+
+<!-- =================================================
+     PROJECT GRID
+================================================= -->
+
+<div class="grid">
+
+
+    <!-- Snake -->
+
+    <article
+        class="project reveal"
+        data-tilt
+    >
+
+        <a href="snake.html">
+
+            <div class="visual snake">
+                <span>
+                    ●━━●━━◉
+                </span>
+            </div>
+
+            <div class="meta">
+                02 / GAME
+                <i>↗</i>
+            </div>
+
+            <h3>
+                Neon Snake
+            </h3>
+
+            <p>
+                Classic arcade energy,
+                rebuilt for the browser.
+            </p>
+
+        </a>
+
+    </article>
+
+
+
+    <!-- Physics -->
+
+    <article
+        class="project reveal"
+        data-tilt
+    >
+
+        <a href="simindex.html">
+
+            <div class="visual particles">
+
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+
+            </div>
+
+            <div class="meta">
+                03 / SIMULATION
+                <i>↗</i>
+            </div>
+
+            <h3>
+                Physics Sandbox
+            </h3>
+
+            <p>
+                A playground for particles,
+                motion and experiments.
+            </p>
+
+        </a>
+
+    </article>
+
+
+
+    <!-- Python -->
+
+    <article
+        class="project reveal"
+        data-tilt
+    >
+
+        <a href="game.html">
+
+            <div class="visual py">
+                <span>PY</span>
+            </div>
+
+            <div class="meta">
+                04 / EXPERIMENT
+                <i>↗</i>
+            </div>
+
+            <h3>
+                Python Game
+            </h3>
+
+            <p>
+                Learning programming by
+                turning logic into play.
+            </p>
+
+        </a>
+
+    </article>
+
+
+
+    <!-- Calculator -->
+
+    <article
+        class="project reveal"
+        data-tilt
+    >
+
+        <a href="calculator.html">
+
+            <div class="visual calc">
+                <span>
+                    + − × ÷
+                </span>
+            </div>
+
+            <div class="meta">
+                05 / UTILITY
+                <i>↗</i>
+            </div>
+
+            <h3>
+                Calculator
+            </h3>
+
+            <p>
+                A tiny tool with a
+                clean interface.
+            </p>
+
+        </a>
+
+    </article>
+
+
+
+    <!-- Todo -->
+
+    <article
+        class="project wide reveal"
+        data-tilt
+    >
+
+        <a href="todo.html">
+
+            <div class="visual todo">
+
+                <span>
+                    PLAN → BUILD → SHIP → REPEAT
+                </span>
+
+            </div>
+
+            <div class="meta">
+                06 / PRODUCTIVITY
+                <i>↗</i>
+            </div>
+
+            <h3>
+                To-Do System
+            </h3>
+
+            <p>
+                Organize the work,
+                then get back to building.
+            </p>
+
+        </a>
+
+    </article>
+
+
+</div>
+```
+
 </section>
+
+<!-- =====================================================
+     AI LAB
+===================================================== -->
 
 <section id="lab" class="lab">
- <div class="label">03 — AI / LAB</div>
- <div class="lab-grid reveal"><h2>MAKE<br><i>IT CURIOUS.</i></h2>
-  <div class="ai"><header><span>ABHINAV AI</span><b>● READY</b></header><div class="chat"><strong>Ask me anything.</strong><p id="ans">Your question will appear here.</p></div><div class="input"><input id="q" placeholder="What are you curious about?"><button onclick="askRealAI()">↗</button></div></div>
- </div>
+
+```
+<div class="label">
+    03 — AI / LAB
+</div>
+
+
+<div class="lab-grid reveal">
+
+    <h2>
+        MAKE
+        <br>
+        <i>IT CURIOUS.</i>
+    </h2>
+
+
+    <div class="ai">
+
+        <header>
+
+            <span>
+                ABHINAV AI
+            </span>
+
+            <b>
+                ● READY
+            </b>
+
+        </header>
+
+
+        <div class="chat">
+
+            <strong>
+                Ask me anything.
+            </strong>
+
+            <p id="ans">
+                Your question will appear here.
+            </p>
+
+        </div>
+
+
+        <div class="input">
+
+            <input
+                id="q"
+                type="text"
+                autocomplete="off"
+                placeholder="What are you curious about?"
+                aria-label="Ask Abhinav AI"
+            >
+
+            <button
+                type="button"
+                onclick="askRealAI()"
+                aria-label="Ask AI"
+            >
+                ↗
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
 </section>
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
 
 <section id="contact" class="contact">
- <div class="label">04 — CONTACT</div>
- <h2 class="reveal">LET'S MAKE<br><i>SOMETHING.</i></h2>
- <div class="contact-grid"><p>Have an idea, question or project?<br>Send it over.</p>
- <form action="https://formsubmit.co/abhinavshukla12@gmail.com" method="POST"><input type="hidden" name="_captcha" value="false"><input name="name" placeholder="YOUR NAME" required><input type="email" name="email" placeholder="YOUR EMAIL" required><textarea name="message" placeholder="YOUR MESSAGE"></textarea><button>SEND IT <span>↗</span></button></form></div>
-</section>
-<div class="marquee">BUILD <b>+</b> PLAY <b>+</b> EXPLORE <b>+</b> REPEAT <b>+</b> BUILD <b>+</b> PLAY <b>+</b></div>
-</main>
-<footer><span>ABHINAV / 2026</span><span>MADE TO LEARN · BUILT TO SHIP</span><a href="https://youtube.com/@abhinavconceptlab" target="_blank">YOUTUBE ↗</a></footer>
 
-<script src="script.js"></script><script src="ai.js"></script><script src="omega.js"></script>
-<script>
-addEventListener('load',()=>document.body.classList.add('loaded'));
-const cur=document.querySelector('.cursor'),canvas=document.querySelector('#life'),ctx=canvas.getContext('2d');let W,H,P=[],m={x:-1e3,y:-1e3};
-function size(){W=innerWidth;H=innerHeight;canvas.width=W;canvas.height=H;P=Array.from({length:Math.min(80,Math.max(28,W/18|0))},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:.5+Math.random()*1.4}))}size();addEventListener('resize',size);addEventListener('pointermove',e=>{m.x=e.clientX;m.y=e.clientY;cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px'});
-(function loop(){ctx.clearRect(0,0,W,H);P.forEach(a=>{let dx=m.x-a.x,dy=m.y-a.y,d=Math.hypot(dx,dy)||1;if(d<170){a.vx+=dx/d*.002;a.vy+=dy/d*.002}a.x+=a.vx;a.y+=a.vy;if(a.x<0)a.x=W;if(a.x>W)a.x=0;if(a.y<0)a.y=H;if(a.y>H)a.y=0;ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,7);ctx.fillStyle='rgba(231,149,63,.45)';ctx.fill()});for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){let a=P[i],b=P[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<105){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle='rgba(231,149,63,'+(0.08*(1-d/105))+')';ctx.stroke()}}requestAnimationFrame(loop)})();
-const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
-document.querySelectorAll('[data-tilt]').forEach(el=>{el.addEventListener('pointermove',e=>{let r=el.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;el.style.transform=`perspective(1100px) rotateX(${(y/r.height-.5)*-2.5}deg) rotateY(${(x/r.width-.5)*2.5}deg) translateY(-5px)`});el.addEventListener('pointerleave',()=>el.style.transform='')});
-document.querySelectorAll('a,button').forEach(x=>{x.onmouseenter=()=>cur.classList.add('big');x.onmouseleave=()=>cur.classList.remove('big')});
-</script>
-</body></html>
+```
+<div class="label">
+    04 — CONTACT
+</div>
+
+
+<h2 class="reveal">
+
+    LET'S MAKE
+    <br>
+
+    <i>SOMETHING.</i>
+
+</h2>
+
+
+<div class="contact-grid">
+
+
+    <p>
+        Have an idea, question or project?
+        <br>
+        Send it over.
+    </p>
+
+
+    <form
+        action="https://formsubmit.co/abhinavshukla12@gmail.com"
+        method="POST"
+    >
+
+        <input
+            type="hidden"
+            name="_captcha"
+            value="false"
+        >
+
+        <input
+            type="hidden"
+            name="_subject"
+            value="New message from Abhinav Portfolio"
+        >
+
+
+        <input
+            name="name"
+            placeholder="YOUR NAME"
+            autocomplete="name"
+            required
+        >
+
+
+        <input
+            type="email"
+            name="email"
+            placeholder="YOUR EMAIL"
+            autocomplete="email"
+            required
+        >
+
+
+        <textarea
+            name="message"
+            placeholder="YOUR MESSAGE"
+        ></textarea>
+
+
+        <button type="submit">
+
+            SEND IT
+
+            <span>
+                ↗
+            </span>
+
+        </button>
+
+    </form>
+
+</div>
+```
+
+</section>
+
+<!-- =====================================================
+     END MARQUEE
+===================================================== -->
+
+<div class="marquee">
+
+```
+BUILD <b>+</b>
+PLAY <b>+</b>
+EXPLORE <b>+</b>
+REPEAT <b>+</b>
+
+BUILD <b>+</b>
+PLAY <b>+</b>
+EXPLORE <b>+</b>
+REPEAT <b>+</b>
+```
+
+</div>
+
+</main>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+```
+<span>
+    ABHINAV / 2026
+</span>
+
+<span>
+    MADE TO LEARN · BUILT TO SHIP
+</span>
+
+<a
+    href="https://youtube.com/@abhinavconceptlab"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    YOUTUBE ↗
+</a>
+```
+
+</footer>
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
+
+<script src="ai.js"></script>
+
+<script src="omega.js"></script>
+
+<!-- NEW INTERACTION ENGINE -->
+
+<script src="interaction.js"></script>
+
+</body>
+</html>
